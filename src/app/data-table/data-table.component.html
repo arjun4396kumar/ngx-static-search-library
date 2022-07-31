@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="table-header">
+        <div class="search">
+            <div class="search-box"></div>
+            <div class="search-box">
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" id="search" value="" placeholder="Search" class="form-control"
+                            [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" />
+                     
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container
+                    *ngFor="let user of userlist | customSearch:{firstName:searchText , lastName:searchText}:false">
+                    <tr>
+                        <!-- <th scope="row">{{}}</th> -->
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+
+</div>
